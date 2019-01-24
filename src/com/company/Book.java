@@ -36,7 +36,7 @@ public class Book {
 
 
 
-    public void printDetails() {
-        System.out.println("Title: " + title + "\nAuthor: " + author + "\nNumber of Pages: " + numberOfPages + "\nYear Published: " + yearPublished);
+    public String printDetails() {
+        return ("Title: " + title + "\nAuthor: " + author + "\nNumber of Pages: " + numberOfPages + "\nYear Published: " + yearPublished);
     }
 }
