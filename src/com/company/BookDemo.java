@@ -12,43 +12,71 @@ public class BookDemo {
         //In a class named BookDemo, give the user (3) options: they can see how many books they have, add a book to their Library, or exit the program. If they choose to add a book, they should be prompted to enter all the necessary details about each book. The user should be able to add as many books as they want, and view the number of books in their library as often as they wish.
 
         Library yourLibrary = new Library();
-        boolean cycle;
+        boolean cycle = true;
 
 
-        do {
-            System.out.println("Welcome to your library! Please select an option.\n1 - See How Many Books You Have\n2 - Add a Book to Your Library\n3 - Exit Program");
-            Scanner userInput = new Scanner(System.in);
-            int choice = userInput.nextInt();
+            do {
+                System.out.println("Welcome to your library! Please select an option.\n1 - See How Many Books You Have\n2 - Add a Book to Your Library\n3 - Exit Program");
+                Scanner userInput = new Scanner(System.in);
+                int choice = userInput.nextInt();
 
-            if (choice == 1) {
-                System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
-            } else if (choice == 2) {
-                Book newBook = new Book();
+                switch (choice) {
 
-                System.out.println("Please enter the title of the book");
-                userInput.nextLine();
-                newBook.setTitle(userInput.nextLine());
+                    case 1: //number of books
+                        System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
+                        break;
+
+                    case 2: //add book
+                        if (yourLibrary.hasRoom()) {
+                            char anotherBook;
+
+                            do {
+                                Book newBook = new Book();
+
+                                System.out.println("Please enter the title of the book");
+                                userInput.nextLine();
+                                newBook.setTitle(userInput.nextLine());
+
+                                System.out.println("Please enter the author of the book");
+                                newBook.setAuthor(userInput.nextLine());
+
+                                System.out.println("Please enter the number of pages in the book");
+                                newBook.setNumberOfPages(userInput.nextInt());
+
+                                System.out.println("Please enter the year the book was published");
+                                newBook.setYearPublished(userInput.nextInt());
+
+                                yourLibrary.addBook(newBook);
+
+                                System.out.println(newBook.printDetails());
 
 
-                System.out.println("Please enter the author of the book");
-                newBook.setAuthor(userInput.nextLine());
+                                System.out.println("Would you like to enter another book? Y/N");
+                                anotherBook = userInput.next().charAt(0);
 
-                System.out.println("Please enter the number of pages in the book");
-                newBook.setNumberOfPages(userInput.nextInt());
+                                if (yourLibrary.hasRoom()) {
+                                } else {System.out.println("library is full!");}
 
-                System.out.println("Please enter the year the book was published");
-                newBook.setYearPublished(userInput.nextInt());
+                            } while ((anotherBook == 'y' || anotherBook == 'Y') && (yourLibrary.hasRoom()));
 
-                System.out.println(newBook.printDetails());
+                        } else {
+                                System.out.println("Library is full!");
+                                } break;
 
-                yourLibrary.booksInLibrary[0] = newBook;
+                    case 3:
+                        System.out.println("Thank you and have a great day!");
+                        cycle = false;
+                        break;
 
-            }
-            else {
-                System.out.println("Thank you and have a great day!");
-                break;
+                        default: System.out.println("Please choose an options 1 - 3");
+
                 }
 
-        } while (cycle = true);
+
+            } while (cycle);
+
     }
 }
+
+
+
