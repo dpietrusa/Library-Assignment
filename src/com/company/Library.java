@@ -1,37 +1,28 @@
 package com.company;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Library {
 
-
-    private Book[] booksInLibrary = new Book[3];
+    private List<Book> booksInLibrary = new ArrayList<>();
 
     public int numberOfBooksInLibrary() {
-        int numBooks = 0;
-        for (int i = 0; i < booksInLibrary.length; i++) {
-            if (booksInLibrary[i] != null) {
-                numBooks++;
-            }
-        }
-        return numBooks;
+        return booksInLibrary.size();
     }
 
 
-public void addBook(Book book) {
-    for (int i = 0; i <= booksInLibrary.length; i++) {
-        if (booksInLibrary[i] == null) {
-            booksInLibrary[i] = book;
-            break;
-        } //else {System.out.println("Library is Full!");}
+    public void addBook(Book book) {
+        booksInLibrary.add(book);
     }
-}
-
-public boolean libraryFull() {return numberOfBooksInLibrary() == booksInLibrary.length; }
-
-public boolean hasRoom() {return !libraryFull(); }
 
 
-
-
+//public String searchBookTitle(String titleSearch) {
+//for (int i = 0; i <= booksInLibrary.size(); i++) {
+//if (booksInLibrary[i].bookTitle == titleSearch);
+//int matchingIndex = i;
+    //       }System.out.println(booksInLibrary[matching]);
+//    }
 
 
 }

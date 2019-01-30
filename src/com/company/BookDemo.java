@@ -16,70 +16,73 @@ public class BookDemo {
         boolean cycle = true;
 
 
-            do {
-                System.out.println("Welcome to your library! Please select an option.\n1 - See How Many Books You Have\n2 - Add a Book to Your Library\n3 - Exit Program");
-                Scanner userInput = new Scanner(System.in);
-                int choice = userInput.nextInt();
+        do {
+            System.out.println("Welcome to your library! Please select an option.\n1 - See How Many Books You Have\n" +
+                    "2 - Add a Book to Your Library\n3 - Search Book By Title\n4 - Delete a Book\n5 - Update a Book\n" +
+                    "6 - Exit Program");
+            Scanner userInput = new Scanner(System.in);
+            int choice = userInput.nextInt();
 
-                //if (choice != 1 || choice != 2 || choice != 3); {
-                //System.out.print("Please enter a number!");
-               // }
+            switch (choice) {
 
-                switch (choice) {
+                case 1: //number of books
+                    if (yourLibrary.numberOfBooksInLibrary() == 1) {
+                        System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " book!\n");
+                    } else System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
+                    break;
 
-                    case 1: //number of books
-                        if (yourLibrary.numberOfBooksInLibrary() == 1) {
-                            System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " book!\n");
-                            } else System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
-                        break;
+                case 2: //add book
+                        char anotherBook;
 
-                    case 2: //add book
-                        if (yourLibrary.hasRoom()) {
-                            char anotherBook;
+                        do {
 
-                            do {
+                            System.out.println("Please enter the title of the book:");
+                            userInput.nextLine();
+                            String title = (userInput.nextLine());
 
-                                System.out.println("Please enter the title of the book");
-                                userInput.nextLine();
-                                String title = (userInput.nextLine());
+                            System.out.println("Please enter the author of the book:");
+                            String author = (userInput.nextLine());
 
-                                System.out.println("Please enter the author of the book");
-                                String author = (userInput.nextLine());
+                            System.out.println("Please enter the number of pages in the book:");
+                            int numberOfPages = (userInput.nextInt());
 
-                                System.out.println("Please enter the number of pages in the book");
-                                int numberOfPages = (userInput.nextInt());
+                            System.out.println("Please enter the year the book was published:");
+                            int yearPublished = (userInput.nextInt());
 
-                                System.out.println("Please enter the year the book was published");
-                                int yearPublished = (userInput.nextInt());
+                            Book newBook = new Book(title, author, numberOfPages, yearPublished);
+                            yourLibrary.addBook(newBook);
 
-                                Book newBook = new Book(title, author, numberOfPages, yearPublished);
-                                yourLibrary.addBook(newBook);
+                            System.out.println(newBook.printDetails());
 
-                                System.out.println(newBook.printDetails());
+                            System.out.println("Would you like to enter another book? Y/N");
+                            anotherBook = userInput.next().charAt(0);
 
-                                System.out.println("Would you like to enter another book? Y/N");
-                                anotherBook = userInput.next().charAt(0);
-
-                                if (yourLibrary.hasRoom()) {
-                                } else {System.out.println("library is full!");}
-
-                            } while ((anotherBook == 'y' || anotherBook == 'Y') && (yourLibrary.hasRoom()));
-
-                        } else {
-                                System.out.println("Library is full!");
-                                } break;
-
-                    case 3:
-                        System.out.println("Thank you and have a great day!");
-                        cycle = false;
-                        break;
-
-                        default: System.out.println("Please choose an options 1 - 3");
-
-                }
+                        } while (anotherBook == 'y' || anotherBook == 'Y');
 
 
-            } while (cycle);
+                   break;
+
+                case 3: //search book
+                   System.out.println("Enter the title of the book you would like to search for:");
+                    String titleSearch = userInput.nextLine();
+                    for (int i = 0; i <= yourLibrary.numberOfBooksInLibrary(); i++) {
+                    }
+
+                   //   String titleSearch = userInput.nextLine();
+                   //   yourLibrary.searchBookTitle(titleSearch);
+
+
+                case 6:
+                    System.out.println("Thank you and have a great day!");
+                    cycle = false;
+                    break;
+
+                default:
+                    System.out.println("Please choose an options 1 - 6");
+
+            }
+
+        } while (cycle);
 
     }
 }

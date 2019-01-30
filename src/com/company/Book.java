@@ -2,7 +2,7 @@ package com.company;
 
 public class Book {
 
-    private String bookTitle;
+    public String bookTitle;
     private String bookAuthor;
     private int bookNumberOfPages;
     private int bookYearPublished;
@@ -14,8 +14,8 @@ public class Book {
         this.bookYearPublished = yearPublished;
     }
 
-       public String printDetails() {
-           return ("Title: " + bookTitle + "\nAuthor: " + bookAuthor + "\nNumber of Pages: " + bookNumberOfPages
+    public String printDetails() {
+        return ("Title: " + bookTitle + "\nAuthor: " + bookAuthor + "\nNumber of Pages: " + bookNumberOfPages
                 + "\nYear Published: " + bookYearPublished);
 
     }
