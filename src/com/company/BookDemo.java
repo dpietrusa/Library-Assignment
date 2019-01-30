@@ -11,6 +11,7 @@ public class BookDemo {
         //
         //In a class named BookDemo, give the user (3) options: they can see how many books they have, add a book to their Library, or exit the program. If they choose to add a book, they should be prompted to enter all the necessary details about each book. The user should be able to add as many books as they want, and view the number of books in their library as often as they wish.
 
+
         Library yourLibrary = new Library();
         boolean cycle = true;
 
@@ -20,10 +21,16 @@ public class BookDemo {
                 Scanner userInput = new Scanner(System.in);
                 int choice = userInput.nextInt();
 
+                //if (choice != 1 || choice != 2 || choice != 3); {
+                //System.out.print("Please enter a number!");
+               // }
+
                 switch (choice) {
 
                     case 1: //number of books
-                        System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
+                        if (yourLibrary.numberOfBooksInLibrary() == 1) {
+                            System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " book!\n");
+                            } else System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
                         break;
 
                     case 2: //add book
@@ -31,25 +38,24 @@ public class BookDemo {
                             char anotherBook;
 
                             do {
-                                Book newBook = new Book();
 
                                 System.out.println("Please enter the title of the book");
                                 userInput.nextLine();
-                                newBook.setTitle(userInput.nextLine());
+                                String title = (userInput.nextLine());
 
                                 System.out.println("Please enter the author of the book");
-                                newBook.setAuthor(userInput.nextLine());
+                                String author = (userInput.nextLine());
 
                                 System.out.println("Please enter the number of pages in the book");
-                                newBook.setNumberOfPages(userInput.nextInt());
+                                int numberOfPages = (userInput.nextInt());
 
                                 System.out.println("Please enter the year the book was published");
-                                newBook.setYearPublished(userInput.nextInt());
+                                int yearPublished = (userInput.nextInt());
 
+                                Book newBook = new Book(title, author, numberOfPages, yearPublished);
                                 yourLibrary.addBook(newBook);
 
                                 System.out.println(newBook.printDetails());
-
 
                                 System.out.println("Would you like to enter another book? Y/N");
                                 anotherBook = userInput.next().charAt(0);

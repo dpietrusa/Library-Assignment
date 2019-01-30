@@ -2,44 +2,21 @@ package com.company;
 
 public class Book {
 
-    private String title;
-    private String author;
-    private int numberOfPages;
-    private int yearPublished;
+    private String bookTitle;
+    private String bookAuthor;
+    private int bookNumberOfPages;
+    private int bookYearPublished;
 
-
-    public void setTitle(String bookTitle) {
-        title = bookTitle;
-    }
-    public String getTitle() {return title;}
-
-
-
-    public void setAuthor(String bookAuthor) {
-        author = bookAuthor;
-    }
-    public String getAuthor() {return author;}
-
-
-
-    public void setNumberOfPages(int bookPages) {
-        numberOfPages = bookPages;
-    }
-    public int getNumberOfPages() {return numberOfPages;}
-
-
-
-    public void setYearPublished(int yearPub) {
-        yearPublished = yearPub;
-    }
-    public int getYearPublished() {return yearPublished;}
-
-
-
-    public String printDetails() {
-        return ("Title: " + title + "\nAuthor: " + author + "\nNumber of Pages: " + numberOfPages + "\nYear Published: " + yearPublished);
+    public Book(String title, String author, int numberOfPages, int yearPublished) {
+        this.bookTitle = title;
+        this.bookAuthor = author;
+        this.bookNumberOfPages = numberOfPages;
+        this.bookYearPublished = yearPublished;
     }
 
+       public String printDetails() {
+           return ("Title: " + bookTitle + "\nAuthor: " + bookAuthor + "\nNumber of Pages: " + bookNumberOfPages
+                + "\nYear Published: " + bookYearPublished);
 
-
+    }
 }
