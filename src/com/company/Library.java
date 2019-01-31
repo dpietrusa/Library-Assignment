@@ -11,11 +11,13 @@ public class Library {
         return booksInLibrary.size();
     }
 
-
     public void addBook(Book book) {
         booksInLibrary.add(book);
     }
 
+    public void AddBookAtIndex(int location, Book book) {
+        booksInLibrary.add(location, book);
+    }
 
     public void searchBookTitle(String titleSearch) {
 
@@ -29,11 +31,30 @@ public class Library {
                     break;
 
                 } else if (solution = false) {
-                System.out.println("No books match this title!");
+                    System.out.println("No books match this title!");
                 }
 
             } while (solution);
         }
+    }
+
+
+    public String listTitles(int titleNumber) {
+        return (booksInLibrary.get(titleNumber).bookTitle);
+    }
+
+
+    public void listAllTitles() {
+        for (int i = 0; i < booksInLibrary.size(); i++) {
+            System.out.println(i+1 + " - "+listTitles(i));
+        }
+    }
+
+
+
+    public void removeBook(int removeBook) {
+        int removeBookIndex = removeBook - 1;
+        booksInLibrary.remove(removeBookIndex);
     }
 
 
