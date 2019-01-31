@@ -26,50 +26,65 @@ public class BookDemo {
             switch (choice) {
 
                 case 1: //number of books
+
                     if (yourLibrary.numberOfBooksInLibrary() == 1) {
                         System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " book!\n");
                     } else System.out.println("You have " + yourLibrary.numberOfBooksInLibrary() + " books!\n");
                     break;
 
                 case 2: //add book
-                        char anotherBook;
+                    char anotherBook;
 
-                        do {
+                    do {
 
-                            System.out.println("Please enter the title of the book:");
-                            userInput.nextLine();
-                            String title = (userInput.nextLine());
+                        System.out.println("Please enter the title of the book:");
+                        userInput.nextLine();
+                        String title = (userInput.nextLine());
 
-                            System.out.println("Please enter the author of the book:");
-                            String author = (userInput.nextLine());
+                        System.out.println("Please enter the author of the book:");
+                        String author = (userInput.nextLine());
 
-                            System.out.println("Please enter the number of pages in the book:");
-                            int numberOfPages = (userInput.nextInt());
+                        System.out.println("Please enter the number of pages in the book:");
+                        int numberOfPages = (userInput.nextInt());
 
-                            System.out.println("Please enter the year the book was published:");
-                            int yearPublished = (userInput.nextInt());
+                        System.out.println("Please enter the year the book was published:");
+                        int yearPublished = (userInput.nextInt());
 
-                            Book newBook = new Book(title, author, numberOfPages, yearPublished);
-                            yourLibrary.addBook(newBook);
+                        Book newBook = new Book(title, author, numberOfPages, yearPublished);
+                        yourLibrary.addBook(newBook);
 
-                            System.out.println(newBook.printDetails());
+                        System.out.println(newBook.printDetails());
 
-                            System.out.println("Would you like to enter another book? Y/N");
-                            anotherBook = userInput.next().charAt(0);
+                        System.out.println("Would you like to enter another book? Y/N");
+                        anotherBook = userInput.next().charAt(0);
 
-                        } while (anotherBook == 'y' || anotherBook == 'Y');
+                    } while (anotherBook == 'y' || anotherBook == 'Y');
 
 
-                   break;
+                    break;
 
                 case 3: //search book
-                   System.out.println("Enter the title of the book you would like to search for:");
-                    String titleSearch = userInput.nextLine();
-                    for (int i = 0; i <= yourLibrary.numberOfBooksInLibrary(); i++) {
-                    }
+                    char anotherSearch;
 
-                   //   String titleSearch = userInput.nextLine();
-                   //   yourLibrary.searchBookTitle(titleSearch);
+                    do {
+
+                        System.out.println("Enter the title of the book you would like to search for:");
+                        userInput.nextLine();
+                        String titleSearch = (userInput.nextLine());
+                        //for (int i = 0; i <= yourLibrary.numberOfBooksInLibrary(); i++) {
+
+                        if (yourLibrary.booksInLibrary.size() == 0) {
+                            System.out.println("Your library is empty!");
+                        }
+
+                        else yourLibrary.searchBookTitle(titleSearch);
+                        System.out.println("Search another book by title? Y/N");
+                        anotherSearch = userInput.next().charAt(0);
+
+                    } while (anotherSearch == 'y' || anotherSearch == 'Y');
+
+
+                    break;
 
 
                 case 6:

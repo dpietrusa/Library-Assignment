@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private List<Book> booksInLibrary = new ArrayList<>();
+    public List<Book> booksInLibrary = new ArrayList<>();
 
     public int numberOfBooksInLibrary() {
         return booksInLibrary.size();
@@ -17,12 +17,24 @@ public class Library {
     }
 
 
-//public String searchBookTitle(String titleSearch) {
-//for (int i = 0; i <= booksInLibrary.size(); i++) {
-//if (booksInLibrary[i].bookTitle == titleSearch);
-//int matchingIndex = i;
-    //       }System.out.println(booksInLibrary[matching]);
-//    }
+    public void searchBookTitle(String titleSearch) {
+
+        for (int i = 0; i < booksInLibrary.size(); i++) {
+            boolean solution = false;
+            do {
+
+                if (booksInLibrary.get(i) != null && booksInLibrary.get(i).bookTitle.equals(titleSearch)) {
+                    System.out.println("Here are the details of that book:\n" + booksInLibrary.get(i).printDetails() + "/n");
+                    solution = true;
+                    break;
+
+                } else if (solution = false) {
+                System.out.println("No books match this title!");
+                }
+
+            } while (solution);
+        }
+    }
 
 
 }
